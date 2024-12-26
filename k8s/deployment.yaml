@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: signoz-service-k8s
+spec:
+  selector:
+    matchLabels:
+      app: signoz-service-k8s
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: signoz-service-k8s
+    spec:
+      containers:
+        - name: signoz-service-k8s
+          image: yogeshsangtani5003/signoz-service-k8s
+          ports:
+            - containerPort: 3000

@@ -1,0 +1,12 @@
+global:
+  storageClass: gce-resizable
+  cloud: gcp/autogke
+
+clickhouse:
+  installCustomStorageClass: true
+
+k8s-infra:
+  presets:
+    kubeletMetrics:
+      authType: none
+      endpoint: ${K8S_NODE_NAME}:10255

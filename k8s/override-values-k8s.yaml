@@ -1,0 +1,22 @@
+global:
+  cloud: gcp/autogke
+  clusterName: signoz-cluster
+  deploymentEnvironment: production
+otelCollectorEndpoint: 'my-release-k8s-infra-otel-agent.platform.svc:4317'
+otelInsecure: true
+presets:
+  otlpExporter:
+    enabled: true
+  loggingExporter:
+    enabled: false
+  kubeletMetrics:
+    authType: none
+    endpoint: ${K8S_NODE_NAME}:10255
+  resourceDetection:
+    detectors:
+      - gcp
+      - system
+
+receivers:
+  hostmetrics:
+    enabled: false
